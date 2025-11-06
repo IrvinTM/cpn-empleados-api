@@ -13,6 +13,3 @@ app.listen(PORT, () => {
 });
 
 const tesEnv = process.env.NODE_ENV
-
-console.log(tesEnv)
-

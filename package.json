@@ -16,12 +16,15 @@
   "license": "ISC",
   "packageManager": "pnpm@10.9.0",
   "dependencies": {
+    "@prisma/adapter-pg": "^6.19.0",
+    "@prisma/client": "^6.19.0",
     "@types/express": "^5.0.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0"
   },
   "devDependencies": {
     "@types/node": "^24.10.0",
+    "prisma": "^6.19.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   }
