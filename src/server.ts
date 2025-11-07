@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import "dotenv/config";
 import userRoutes from "./routes/user.routes";
+import exportRoutes from "./routes/export.routes";
 
 const app: Application = express();
 const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 8080;
@@ -9,6 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api", userRoutes);
+app.use("/api/exportar", exportRoutes);
 
 app.get("/health", (req, res) => {
   res.json({
