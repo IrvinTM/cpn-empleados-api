@@ -3,7 +3,7 @@ import "dotenv/config";
 import userRoutes from "./routes/user.routes";
 
 const app: Application = express();
-const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 3000;
+const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", userRoutes);
 
 app.get("/health", (req, res) => {
-  res.json({ 
+  res.json({
     status: "OK",
     message: "API De Empleados Funcionando",
     timestamp: new Date().toISOString(),

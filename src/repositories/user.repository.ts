@@ -4,7 +4,7 @@ import { Empleado } from "../generated/prisma/client";
 export const empleadoRepository = {
   // We don't need the model file interface anymore, 
   // Prisma generates 'Empleado' type for us.
-  
+
   // Create
   async create(data: Omit<Empleado, 'id' | 'createdAt' | 'updatedAt'>): Promise<Empleado> {
     return prisma.empleado.create({
@@ -18,14 +18,14 @@ export const empleadoRepository = {
   },
 
   // Read (One)
-  async findById(id: string): Promise<Empleado | null> {
+  async findById(id: number): Promise<Empleado | null> {
     return prisma.empleado.findUnique({
       where: { id: id },
     });
   },
 
   // Update
-  async update(id: string, data: Partial<Empleado>): Promise<Empleado | null> {
+  async update(id: number, data: Partial<Empleado>): Promise<Empleado | null> {
     return prisma.empleado.update({
       where: { id: id },
       data: data,
@@ -33,7 +33,7 @@ export const empleadoRepository = {
   },
 
   // Delete
-  async delete(id: string): Promise<Empleado | null> {
+  async delete(id: number): Promise<Empleado | null> {
     return prisma.empleado.delete({
       where: { id: id },
     });

@@ -4,7 +4,7 @@ import { IUser, ICreateUser } from "../models/user.interface";
 const prisma = new PrismaClient();
 
 export class UserService {
-  
+
   public async getAllUsers(): Promise<IUser[]> {
     try {
       const empleados = await prisma.empleado.findMany();
@@ -33,7 +33,7 @@ export class UserService {
         data: {
           nombre: userData.nombre,
           email: userData.email,
-          departamento: userData.departamento,
+          departamento: userData.departamento ?? "Sin Departamento",
           fecha_contratacion: userData.fecha_contratacion || new Date()
         }
       });
@@ -48,7 +48,7 @@ export class UserService {
     try {
       const empleadoActualizado = await prisma.empleado.update({
         where: { id },
-        data: userData
+        data: userData as any
       });
       return empleadoActualizado as IUser;
     } catch (error) {
