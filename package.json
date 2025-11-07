@@ -16,6 +16,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.9.0",
   "dependencies": {
+    "@google-cloud/storage": "^7.17.3",
     "@prisma/adapter-pg": "^6.19.0",
     "@prisma/client": "^6.19.0",
     "@types/express": "^5.0.5",
