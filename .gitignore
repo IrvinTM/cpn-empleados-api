@@ -4,4 +4,16 @@ node_modules
 dist
 
 /src/generated/prisma
+
 /config/*.json
+src/config/*.json
+*.json
+!package.json
+!tsconfig.json
+!pnpm-lock.yaml
+
+*.log
+logs/
+
+.vscode/
+.idea//config/*.json

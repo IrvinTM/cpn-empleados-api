@@ -9,17 +9,21 @@ export class ExportService {
   private bucketName: string = 'cpn135bucket'; // 
 
   constructor() {
-    try {
-      // Configuración con manejo de errores mejorado
-      this.storage = new Storage({
-  keyFilename: './src/config/dam-app-android-2ad51d979d59.json'
-});
-      console.log('Cloud Storage configurado correctamente');
-    } catch (error) {
-      console.error('Error configurando Cloud Storage:', error);
-      throw error;
-    }
+  try {
+    this.storage = new Storage({
+      projectId: process.env.GCP_PROJECT_ID,
+      credentials: {
+        client_email: process.env.GCP_CLIENT_EMAIL,
+        private_key: process.env.GCP_PRIVATE_KEY?.replace(/\\n/g, '\n')
+      }
+    });
+    this.bucketName = process.env.GCP_BUCKET_NAME || 'cpn135bucket';
+    console.log('Cloud Storage configurado con variables de entorno');
+  } catch (error) {
+    console.error('Error configurando Cloud Storage:', error);
+    throw error;
   }
+}
   
   public async exportEmpleadosToCSV(): Promise<string> {
     try {
